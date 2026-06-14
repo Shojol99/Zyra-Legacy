@@ -1,0 +1,42 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Cormorant Garamond", serif;
+  --font-sans: "Montserrat", sans-serif;
+  
+  --color-brand-primary: #9D1B68;
+  --color-brand-secondary: #C5A358;
+  --color-brand-background: #FDF9FB;
+  --color-brand-accent: #FDF2F7;
+  --color-brand-accent-soft: #F9EAF2;
+}
+
+@layer utilities {
+  .vertical-text {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    transform: rotate(180deg);
+  }
+}
+
+@layer base {
+  body {
+    @apply font-sans bg-brand-background text-brand-primary antialiased selection:bg-brand-secondary/30;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif tracking-tight text-brand-primary font-bold;
+  }
+
+  /* Refine scrollbar for luxury theme */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-brand-accent;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-brand-secondary/40 rounded-full hover:bg-brand-secondary/60 transition-all;
+  }
+}
